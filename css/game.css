@@ -1,0 +1,42 @@
+.background    { background-image: url("backkground.jpg");
+                 table-layout: fixed;
+                 border-spacing: 0;   }
+.background td { padding: 0;          }
+.lava          { background: rgb(255, 100, 100); }
+.wall          { background: black;   }
+.image .background	{ background-image: url("win.gif"); 
+							table-layout: fixed;
+							border-spacing: 0;  }
+.fail .background	{ background-image: url("fail.gif"); 
+							table-layout: fixed;
+							border-spacing: 0;  }
+
+.actor  { position: absolute;  }
+.coin   { background: rgb(241, 229, 89); }
+.player { background: rgb(64, 64, 64); }
+.black { background: black; }
+.cave .background { background: black; }
+.dark .wall { background: black; }
+.ness .lava { background: black; }
+.win {background: rgb(0, 300, 0); }
+.break {background: rgb(100, 200, 150); }
+
+
+
+.game {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative;
+}
+
+.fail .player {
+  background: rgb(160, 64, 64);
+}
+.won .player {
+  box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+  background: rgb(255, 255, 0);
+}
+.knight .player { 
+  background: rgba(219, 154, 43, 0.05); 
+}
