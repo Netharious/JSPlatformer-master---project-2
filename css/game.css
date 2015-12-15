@@ -1,6 +1,9 @@
 .background    { background-image: url("backkground.jpg");
                  table-layout: fixed;
                  border-spacing: 0;   }
+.canvy	{ background: rgb(0, 0, 0);
+					table-layout: fixed;
+					border-spacing: 0; }
 .background td { padding: 0;          }
 .lava          { background: rgb(255, 100, 100); }
 .wall          { background: black;   }
@@ -22,7 +25,6 @@
 .break {background: rgb(100, 200, 150); }
 
 
-
 .game {
   overflow: hidden;
   max-width: 600px;
@@ -30,13 +32,13 @@
   position: relative;
 }
 
-.fail .player {
+.fail .playerSprites {
   background: rgb(160, 64, 64);
 }
-.won .player {
+.won .playerSprites {
   box-shadow: -4px -7px 8px white, 4px -7px 8px white;
   background: rgb(255, 255, 0);
 }
-.knight .player { 
+.knight .playerSprites { 
   background: rgba(219, 154, 43, 0.05); 
 }

@@ -7,15 +7,15 @@ function flipHorizontally(context, around) {
 
 function CanvasDisplay(parent, level) {
   this.canvas = document.createElement("canvas");
-  this.canvas.width = Math.min(600, level.width * scale);
-  this.canvas.height = Math.min(450, level.height * scale);
+  this.canvas.width = Math.min(800, level.width * scale);
+  this.canvas.height = Math.min(900, level.height * scale);
   parent.appendChild(this.canvas);
   this.cx = this.canvas.getContext("2d");
   
-
   this.level = level;
   this.animationTime = 0;
   this.flipPlayer = false;
+  
 
   this.viewport = {
     left: 0,
@@ -60,19 +60,31 @@ CanvasDisplay.prototype.updateViewport = function() {
 CanvasDisplay.prototype.clearDisplay = function() {
 var playerSprites = document.createElement("img");
 playerSprites.src = "img/player.png";
+
 var background = document.createElement("img");
 background.src = "css/backkground.jpg";
 
+var failure = document.createElement("img");
+failure.src = "css/faill.jpg";
+
+var succeed = document.createElement("img");
+succeed.src = "css/winn.jpg";
+
+var ptrn = this.cx.createPattern(background, 'repeat');
+var ptrn2 = this.cx.createPattern(failure, 'repeat');
+var ptrn3 = this.cx.createPattern(succeed, 'repeat');
+
+
   if (this.level.status == "image")
-    this.cx.fillStyle = "rgb(255, 255, 0)",
+    this.cx.fillStyle = ptrn3,
 	otherSprites.src = "img/sprites.png";
   else if (this.level.status == "fail")
-    this.cx.fillStyle = "rgb(160, 64, 64)",
+    this.cx.fillStyle = ptrn2,
 	otherSprites.src = "img/sprites.png";
   else if (this.level.status == "knight")
 	otherSprites.src = "img/sprites2.png";
   else
-    this.cx.drawimage = (background, 0, 0, 600, 450);
+    this.cx.fillStyle = ptrn;
   this.cx.fillRect(0, 0,
                    this.canvas.width, this.canvas.height);
 };
@@ -86,7 +98,7 @@ CanvasDisplay.prototype.drawBackground = function() {
   var xEnd = Math.ceil(view.left + view.width);
   var yStart = Math.floor(view.top);
   var yEnd = Math.ceil(view.top + view.height);
-
+  
   for (var y = yStart; y < yEnd; y++) {
     for (var x = xStart; x < xEnd; x++) {
       var tile = this.level.grid[y][x];
