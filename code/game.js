@@ -392,6 +392,20 @@ Player.prototype.moveY = function(step, level, keys) {
   }
 };
 
+document.addEventListener('keydown', function(e){
+	if (e.keyCode === 32) {
+		gravity = 15;
+		console.log('The "Spacebar" key is being held down');
+	}
+});
+
+document.addEventListener('keyup', function(e){
+	if (e.keyCode === 32) {
+		gravity = 30;
+		console.clear();
+	}
+});
+
 Player.prototype.act = function(step, level, keys) {
   this.moveX(step, level, keys);
   this.moveY(step, level, keys);

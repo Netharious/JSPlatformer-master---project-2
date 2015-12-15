@@ -5,6 +5,8 @@ function flipHorizontally(context, around) {
   context.translate(-around, 0);
 }
 
+var mouse = { x: 0, y: 0 };
+
 function CanvasDisplay(parent, level) {
   this.canvas = document.createElement("canvas");
   this.canvas.width = Math.min(800, level.width * scale);
@@ -16,7 +18,15 @@ function CanvasDisplay(parent, level) {
   this.animationTime = 0;
   this.flipPlayer = false;
   
-
+  this.canvas.addEventListener('mouseover', function(e){
+	mouse.x = e.clientX;
+	mouse.y = e.clientY;
+	
+	otherSprites.onmouseover = function(){
+		console.log('coin is being hovered over');
+	}
+  });
+  
   this.viewport = {
     left: 0,
     top: 0,
@@ -27,6 +37,10 @@ function CanvasDisplay(parent, level) {
   this.drawFrame(0);
 }
 
+
+
+
+  
 CanvasDisplay.prototype.clear = function() {
   this.canvas.parentNode.removeChild(this.canvas);
 };
@@ -140,6 +154,8 @@ CanvasDisplay.prototype.drawPlayer = function(x, y, width,
 
   this.cx.restore();
 };
+
+
 
 CanvasDisplay.prototype.drawActors = function() {
   this.level.actors.forEach(function(actor) {
