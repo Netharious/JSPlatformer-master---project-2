@@ -18,12 +18,23 @@ function CanvasDisplay(parent, level) {
   this.animationTime = 0;
   this.flipPlayer = false;
   
-  this.canvas.addEventListener('mouseover', function(e){
+  this.canvas.addEventListener('mousedown', function(e){
 	mouse.x = e.clientX;
 	mouse.y = e.clientY;
 	
-	otherSprites.onmouseover = function(){
-		console.log('coin is being hovered over');
+	onmousedown = function(){
+		playerSprites.src = "img/player3.png";
+		console.log('Classy mode enabled');
+	}
+  });
+  
+  this.canvas.addEventListener('mouseup', function(e){
+	mouse.x = e.clientX;
+	mouse.y = e.clientY;
+	
+	onmouseup = function(){
+		playerSprites.src = "img/player.png";
+		console.log('Classy mode Disabled');
 	}
   });
   
